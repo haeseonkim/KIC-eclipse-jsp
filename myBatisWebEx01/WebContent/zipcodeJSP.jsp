@@ -16,7 +16,6 @@
 	
 	String strDong = request.getParameter("dong");
 	
-	// if문 밖에서 출력되니까 if문 밖에 선언
 	StringBuffer html = new StringBuffer();
 
 	String resource = "myBatisConfig.xml";

@@ -1,0 +1,16 @@
+create table ab_board1(
+seq  int not null primary key auto_increment,
+subject  varchar(150) not null,
+writer  varchar(12) not null,
+mail  varchar(50),
+password  varchar(12) not null,
+
+filename varchar(50) not null,
+
+content varchar(2000),
+hit  int not null,
+wip  varchar(15) not null,
+wdate   datetime not null
+);
+
+insert into board1 values(0,'제목','이름','1234','파일이름','내용',0,'000.000.000.000',now());

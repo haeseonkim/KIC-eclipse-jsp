@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis">
+	<!-- 알아서 to 안에 list형태로 담김 -->
+	<select id="selectList1" resultType="DeptTO">
+		select deptno, dname, loc
+		from dept;
+	</select>
+	
+	<!-- 사원정보 가져오기 -->
+	<select id="selectList2" parameterType="String" resultType="EmpTO">
+		select empno, ename, job, mgr, hiredate, sal, comm, deptno
+		from emp 
+		where deptno=#{deptno};
+	</select>
+	
+	<!-- like 검색 -->
+	<select id="selectList3" parameterType="String" resultType="EmpTO">
+		select empno, ename, job, mgr, hiredate, sal, comm, deptno
+		from emp 
+		where ename like #{ename};
+	</select>
+	
+	<!-- like 검색 -->
+	<select id="selectList4" parameterType="String" resultType="EmpTO">
+		select empno, ename, job, mgr, hiredate, sal, comm, deptno
+		from emp 
+		where ename like concat(#{ename}, '%');
+	</select>
+	
+	<!-- join 검색 -->
+	<select id="selectList5" resultType="java.util.HashMap">
+		select empno, ename, sal, grade
+		from emp e, salgrade s
+		where e.sal between s.losal and s.hisal;
+	</select>
+	
+	<!-- join 검색 부등호 사용-->
+	<select id="selectList6" resultType="java.util.HashMap">
+		select empno, ename, sal, grade
+		from emp e, salgrade s
+		where e.sal &gt;= s.losal and e.sal &lt;= s.hisal
+	</select>
+</mapper>

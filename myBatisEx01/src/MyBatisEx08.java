@@ -1,0 +1,51 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class MyBatisEx08 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String resource = "myBatisConfig.xml";
+		
+		// 파일 읽어 오기
+		InputStream is = null;
+		// 데이터베이스 연결
+		SqlSession sqlSession = null;
+		
+		
+		try {
+			is = Resources.getResourceAsStream( resource );
+			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+			System.out.println("호출 성공");
+			
+			sqlSession = sqlSessionFactory.openSession();
+			System.out.println("연결 성공");
+			
+			List<Map> lists = sqlSession.selectList("selectList6");
+			System.out.println(lists.size());
+			
+			for(int i=0; i<lists.size(); i++) {
+				Map map = lists.get(i);
+				System.out.println(map.get("empno"));
+				System.out.println(map.get("ename"));
+				System.out.println(map.get("grade"));
+			}
+			
+		} catch (IOException e) {
+			System.out.println("에러" + e.getMessage());
+		} finally {
+			if(sqlSession != null) sqlSession.close();
+			if(is != null) try { is.close(); } catch(IOException e) {}
+		}
+	}
+
+}

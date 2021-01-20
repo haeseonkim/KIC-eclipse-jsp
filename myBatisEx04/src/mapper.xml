@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis">
+	<update id="createTable1" parameterType="String">
+		${value}
+	</update>
+	
+	<update id="createTable2" parameterType="String">
+		<!-- #{value} '' / ${value} -->
+		create table if not exists ${value} (
+			col1 varchar(10)
+		)
+	</update>
+	
+	<update id="dropTable1" parameterType="String">
+		drop table ${value}
+	</update>
+</mapper>

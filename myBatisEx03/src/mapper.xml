@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis">
+	<insert id="insert1" parameterType="DeptTO">
+		insert into dept(deptno, dname, loc)
+		values(#{deptno}, #{dname}, #{loc})
+	</insert>
+	
+	<delete id="delete1" parameterType="String">
+		delete from dept
+		where deptno=#{deptno}
+	</delete>
+	
+	<update id="update1" parameterType="DeptTO">
+		update dept 
+		set loc=#{loc} 
+		where deptno=#{deptno}
+	</update>
+</mapper>

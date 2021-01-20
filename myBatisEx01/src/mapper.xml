@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis">
+	<!-- mybatis 밑에 select1 이 있다는 뜻이므로 mybatis.select1 이런식으로 부를수도 있다. -->
+	<select id="select1" resultType="DeptTO">
+		select deptno, dname, loc
+		from dept
+		where deptno=10;
+	</select>
+	<!-- 한개의 데이터만 가져올수 있다. -->
+	<!-- 그냥은 못가져오고 to로 가져와야함 -->
+	<!-- 자동적으로 sql결과를 resultType으로 set한다. 그래서 setter가 호출된다. -->
+
+
+	<!-- 값을 들고 들어갈 경우 -->
+	<!-- parameterType을 사용 -->
+	<select id="select2" parameterType="String" resultType="DeptTO">
+		select deptno, dname, loc
+		from dept
+		where deptno=#{deptno};
+	</select>
+	
+	<!-- 여러개 값을 들고 들어갈 경우 -->
+	<!-- to로 들고 들어감 -->
+	<select id="select3" parameterType="DeptTO" resultType="DeptTO">
+		select deptno, dname, loc
+		from dept
+		where deptno=#{deptno} and dname=#{dname};
+	</select>
+	
+	<!-- HashMap으로 가져가고 싶을 때 -->
+	<select id="select4" parameterType="DeptTO" resultType="java.util.HashMap">
+		select deptno, dname, loc
+		from dept
+		where deptno=#{deptno} and dname=#{dname};
+	</select>
+
+</mapper>

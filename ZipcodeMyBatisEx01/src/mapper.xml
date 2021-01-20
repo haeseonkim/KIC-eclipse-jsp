@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis">
+	<!-- like 검색 -->
+	<select id="selectList1" parameterType="String" resultType="ZipcodeTO">
+		select zipcode, sido, gugun, dong, ri, bunji
+		from zipcode
+		where dong like #{dong};
+	</select>
+	
+	<!-- like 검색 -->
+	<select id="selectList2" parameterType="String" resultType="ZipcodeTO">
+		select zipcode, sido, gugun, dong, ri, bunji
+		from zipcode
+		where dong like concat(#{dong}, '%');
+	</select>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version= "1.0" encoding ="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 데이터베이스 연결 설정 -->
+<configuration>
+	<environments default="mariadb1">
+		<!-- environment는 여러개가 될수 있고 id값이 default에 들어간다. -->
+		<environment id="mariadb1">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.mariadb.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3307/project" />
+				<property name="username" value="project" />
+				<property name="password" value="123456" />
+			</dataSource>
+		</environment>
+		<environment id="mariadb2">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+				<property name="data_source" value="java:comp/env/jdbc/mariadb2" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+</configuration>

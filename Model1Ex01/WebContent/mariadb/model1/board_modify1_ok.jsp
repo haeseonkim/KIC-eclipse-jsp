@@ -12,6 +12,7 @@
 	to.setPassword(request.getParameter("password"));
 	
 	to.setSubject(request.getParameter("subject"));
+	
 	// 필수 입력 항목이 아닌 경우
 	to.setMail("");
 	if(!request.getParameter("mail1").equals("") && !request.getParameter("mail2").equals("")){

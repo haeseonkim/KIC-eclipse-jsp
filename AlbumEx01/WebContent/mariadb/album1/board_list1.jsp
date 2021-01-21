@@ -36,7 +36,6 @@
 	
 	ArrayList<BoardTO> lists = listTO.getBoardLists();
 	
-	
 	StringBuffer sbHtml = new StringBuffer();
 	int row = 1;
 	for(BoardTO to: lists){

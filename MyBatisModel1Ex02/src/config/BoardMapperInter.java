@@ -26,7 +26,6 @@ public interface BoardMapperInter {
 	@Update("insert board1 values(0, #{subject}, #{writer}, #{mail}, #{password}, #{content}, 0, #{wip}, now())")
 	public int boardWriteOk(BoardTO to);
 
-	
 	// modify
 	@Select("select seq, subject, writer, content, mail from board1 where seq=#{seq}")
 	public BoardTO boardModify(BoardTO to);

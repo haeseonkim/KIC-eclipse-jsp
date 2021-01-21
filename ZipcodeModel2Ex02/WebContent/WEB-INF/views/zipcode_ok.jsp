@@ -8,7 +8,7 @@
 <%
 	StringBuffer html = new StringBuffer();	
 	ArrayList<ZipcodeTO> lists = (ArrayList)request.getAttribute("lists");
-			
+	//		
 	html.append( "<table width='600' border='1'>" );
 	for(ZipcodeTO to : lists) {
 		html.append( "<tr>" );
